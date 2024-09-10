@@ -1,17 +1,14 @@
-package com.tutorial.retrofit;
+package com.tutorial.retrofit.main;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.tutorial.retrofit.R;
 import com.tutorial.retrofit.api.client.RetrofitClient;
 import com.tutorial.retrofit.api.services.ApiServices;
-import com.tutorial.retrofit.main.PostAdapter;
 
 import java.util.List;
 
@@ -30,15 +27,26 @@ public class MainActivity extends AppCompatActivity {
         getPostsFromApi();
     }
 
+    /*
+    Simple code for getting some data from server using Retrofit.
+    here we are using dummy url to get data.
+     */
     private void getPostsFromApi(){
-        Retrofit retrofit = RetrofitClient.getClient();
+        Toast.makeText(this, "Fetching posts from Server", Toast.LENGTH_SHORT).show();
+
+        Retrofit retrofit = RetrofitClient.getClient();  //get the retrofit instance
         ApiServices services = retrofit.create(ApiServices.class);
 
+        /*
+        enqueue() is used to call the request on background thread.
+        once the response is fetched rest of code in this callbacks methods are executed on main thread.
+         */
         services.getPosts().enqueue(new Callback<List<Post>>() {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
                 System.out.println("getPostsFromApi::onResponse() Thread->"+Thread.currentThread().getName());
 
+                //If response is successful
                 if(response.isSuccessful()){
                     List<Post> postList = response.body();
                     setPostAdapter(postList);
@@ -57,4 +65,10 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView rcv = findViewById(R.id.recyclerView);
         rcv.setAdapter(adapter);
     }
+
+    /*
+    If you are using execute instead of enqueue you need to call the request on background thread.
+    until the response is not fetched till that new thread will be blocked.
+    It is recommended to use enqueue as Retrofit itself manage the thread for requests.
+     */
 }

@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.tutorial.retrofit.Post;
+import com.tutorial.retrofit.main.Post;
 import com.tutorial.retrofit.databinding.ItemPostsBinding;
 
 import java.util.List;

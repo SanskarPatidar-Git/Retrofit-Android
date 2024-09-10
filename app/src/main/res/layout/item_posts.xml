@@ -4,7 +4,7 @@
     <data>
         <variable
             name="post"
-            type="com.tutorial.retrofit.Post" />
+            type="com.tutorial.retrofit.main.Post" />
     </data>
 
     <LinearLayout

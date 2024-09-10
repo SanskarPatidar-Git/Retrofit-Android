@@ -1,4 +1,4 @@
-package com.tutorial.retrofit;
+package com.tutorial.retrofit.main;
 
 public class Post {
 
