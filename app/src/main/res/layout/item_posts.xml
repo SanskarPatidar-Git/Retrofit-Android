@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="post"
+            type="com.tutorial.retrofit.Post" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/classId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{`Class Id : ` + post.userId}"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{`Id : ` + post.id}"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{`Title : ` + post.title}"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{`Body : ` + post.body}"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+</layout>

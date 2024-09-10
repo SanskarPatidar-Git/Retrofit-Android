@@ -25,6 +25,11 @@ android {
             )
         }
     }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -40,4 +45,13 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    //Retrofit
+    implementation(libs.retrofit) // or the latest version
+    implementation(libs.converter.gson)
+
+    //Interceptors
+    implementation(libs.okhttp) // or the latest version
+    implementation(libs.logging.interceptor) // for logging
+
 }
